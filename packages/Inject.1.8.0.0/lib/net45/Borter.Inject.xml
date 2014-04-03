@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Borter.Inject</name>
+    </assembly>
+    <members>
+        <member name="T:Borter.Inject.IInjectContainer">
+            <summary>
+            A dependency injection container that stores type registrations and instances, and creates new types;
+            </summary>
+        </member>
+        <member name="M:Borter.Inject.IInjectContainer.Register``2(Borter.Inject.LifetimePolicy)">
+            <summary>
+            Register a type in the container.
+            </summary>
+            <typeparam name="T">The type to register.</typeparam>
+            <typeparam name="TResolve">The type to resolve.</typeparam>
+            <param name="lifetime">The lifetime policy that defines how objects are created and stored in the container.</param>
+            <returns>The injection container.</returns>
+            <exception cref="T:System.ArgumentException">Type is already registered.</exception>
+        </member>
+        <member name="M:Borter.Inject.IInjectContainer.Register(System.Type,System.Type,Borter.Inject.LifetimePolicy)">
+            <summary>
+            Register a type in the container.
+            </summary>
+            <param name="type">The type to register.</param>
+            <param name="resolveType">The type to resolve.</param>
+            <param name="lifetime">The lifetime policy that defines how objects are created and stored in the container.</param>
+            <returns>The injection container.</returns>
+            <exception cref="T:System.ArgumentException">Type is already registered or <paramref name="resolveType"/> does not derive from <paramref name="type"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type"/> or <paramref name="resolveType"/> is null.</exception>
+        </member>
+        <member name="M:Borter.Inject.IInjectContainer.RegisterInstance``1(``0)">
+            <summary>
+            Register an instance in the container.
+            </summary>
+            <typeparam name="T">The type to register.</typeparam>
+            <param name="instance">The instance to resolve.</param>
+            <returns>The injection container.</returns>
+            <exception cref="T:System.ArgumentException">Type is already registered.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="instance"/> is null.</exception>
+        </member>
+        <member name="M:Borter.Inject.IInjectContainer.RegisterInstance(System.Type,System.Object)">
+            <summary>
+            Register an instance in the container.
+            </summary>
+            <param name="type">The type to register.</param>
+            <param name="instance">The instance to resolve.</param>
+            <returns>The injection container.</returns>
+            <exception cref="T:System.ArgumentException">Type is already registered or instance is not of the same type as <paramref name="type"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type"/> or <paramref name="instance"/> is null.</exception>
+        </member>
+        <member name="M:Borter.Inject.IInjectContainer.Resolve``1">
+            <summary>
+            Resolve a type and return a concrete instance.
+            </summary>
+            <remarks>
+            If the given type is not registered, the type is constructed using the public constructor.
+            </remarks>
+            <typeparam name="T">The type to resolve.</typeparam>
+            <returns>An instance of the type.</returns>
+            <exception cref="T:Borter.Inject.ResolutionFailedException">A type failed to create or a circular reference is detected.</exception>
+        </member>
+        <member name="M:Borter.Inject.IInjectContainer.Resolve(System.Type)">
+            <summary>
+            Resolve a type and return a concrete instance.
+            </summary>
+            <remarks>
+            If the given type is not registered, the type is constructed using the public constructor.
+            </remarks>
+            <param name="type">The type to resolve.</param>
+            <returns>An instance of the type.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type"/>Type is null.</exception>
+            <exception cref="T:Borter.Inject.ResolutionFailedException">A type failed to create or a circular reference is detected.</exception>
+        </member>
+        <member name="T:Borter.Inject.InjectContainer">
+            <summary>
+            A dependency injection container that stores type registrations and instances, and creates new types;
+            </summary>
+        </member>
+        <member name="M:Borter.Inject.InjectContainer.Register``2(Borter.Inject.LifetimePolicy)">
+            <summary>
+            Register a type in the container.
+            </summary>
+            <typeparam name="T">The type to register.</typeparam>
+            <typeparam name="TResolve">The type to resolve.</typeparam>
+            <param name="lifetime">The lifetime policy that defines how objects are created and stored in the container.</param>
+            <returns>The injection container.</returns>
+            <exception cref="T:System.ArgumentException">Type is already registered.</exception>
+        </member>
+        <member name="M:Borter.Inject.InjectContainer.Register(System.Type,System.Type,Borter.Inject.LifetimePolicy)">
+            <summary>
+            Register a type in the container.
+            </summary>
+            <param name="type">The type to register.</param>
+            <param name="resolveType">The type to resolve.</param>
+            <param name="lifetime">The lifetime policy that defines how objects are created and stored in the container.</param>
+            <returns>The injection container.</returns>
+            <exception cref="T:System.ArgumentException">Type is already registered or <paramref name="resolveType"/> does not derive from <paramref name="type"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type"/> or <paramref name="resolveType"/> is null.</exception>
+        </member>
+        <member name="M:Borter.Inject.InjectContainer.RegisterInstance``1(``0)">
+            <summary>
+            Register an instance in the container.
+            </summary>
+            <typeparam name="T">The type to register.</typeparam>
+            <param name="instance">The instance to resolve.</param>
+            <returns>The injection container.</returns>
+            <exception cref="T:System.ArgumentException">Type is already registered.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="instance"/> is null.</exception>
+        </member>
+        <member name="M:Borter.Inject.InjectContainer.RegisterInstance(System.Type,System.Object)">
+            <summary>
+            Register an instance in the container.
+            </summary>
+            <param name="type">The type to register.</param>
+            <param name="instance">The instance to resolve.</param>
+            <returns>The injection container.</returns>
+            <exception cref="T:System.ArgumentException">Type is already registered or instance is not of the same type as <paramref name="type"/>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type"/> or <paramref name="instance"/> is null.</exception>
+        </member>
+        <member name="M:Borter.Inject.InjectContainer.Resolve``1">
+            <summary>
+            Resolve a type and return a concrete instance.
+            </summary>
+            <remarks>
+            If the given type is not registered, the type is constructed using the public constructor.
+            </remarks>
+            <typeparam name="T">The type to resolve.</typeparam>
+            <returns>An instance of the type.</returns>
+            <exception cref="T:Borter.Inject.ResolutionFailedException">A type failed to create or a circular reference is detected.</exception>
+        </member>
+        <member name="M:Borter.Inject.InjectContainer.Resolve(System.Type)">
+            <summary>
+            Resolve a type and return a concrete instance.
+            </summary>
+            <remarks>
+            If the given type is not registered, the type is constructed using the public constructor.
+            </remarks>
+            <param name="type">The type to resolve.</param>
+            <returns>An instance of the type.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type"/>Type is null.</exception>
+            <exception cref="T:Borter.Inject.ResolutionFailedException">A type failed to create or a circular reference is detected.</exception>
+        </member>
+        <member name="T:Borter.Inject.LifetimePolicy">
+            <summary>
+            A policy type that defines how objects are created and stored within the container.
+            </summary>
+        </member>
+        <member name="F:Borter.Inject.LifetimePolicy.Singleton">
+            <summary>
+            Type is created and stored in the container, and subsequent calls will return the same instance.
+            </summary>
+        </member>
+        <member name="F:Borter.Inject.LifetimePolicy.Transient">
+            <summary>
+            Type is created for each call to the container.
+            </summary>
+        </member>
+        <member name="T:Borter.Inject.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Borter.Inject.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Borter.Inject.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Borter.Inject.Properties.Resources.Argument_TypeAlreadyRegistered">
+            <summary>
+              Looks up a localized string similar to Type {0} already registered..
+            </summary>
+        </member>
+        <member name="P:Borter.Inject.Properties.Resources.Argument_TypeShouldInherit">
+            <summary>
+              Looks up a localized string similar to Type {0} does not inherit {1}..
+            </summary>
+        </member>
+        <member name="P:Borter.Inject.Properties.Resources.ResolutionFailed_CannotCreateInterface">
+            <summary>
+              Looks up a localized string similar to Cannot create non-concrete type {0}..
+            </summary>
+        </member>
+        <member name="P:Borter.Inject.Properties.Resources.ResolutionFailed_CircularReference">
+             <summary>
+               Looks up a localized string similar to Type: {0} contains a circular reference.
+            Creation path:
+            {1}.
+             </summary>
+        </member>
+        <member name="P:Borter.Inject.Properties.Resources.ResolutionFailed_CreationError">
+            <summary>
+              Looks up a localized string similar to Exception encountered creating type {0}..
+            </summary>
+        </member>
+        <member name="P:Borter.Inject.Properties.Resources.ResolutionFailed_WrongNumberConstructors">
+            <summary>
+              Looks up a localized string similar to Cannot create type {0}. Type must contain only 1 constructor..
+            </summary>
+        </member>
+        <member name="T:Borter.Inject.ResolutionFailedException">
+            <summary>
+            The exception that is thrown when a type fails to resolve.
+            </summary>
+        </member>
+        <member name="M:Borter.Inject.ResolutionFailedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Borter.Inject.ResolutionFailedException"/> class.
+            </summary>
+        </member>
+        <member name="M:Borter.Inject.ResolutionFailedException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Borter.Inject.ResolutionFailedException"/> class with the specifed error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Borter.Inject.ResolutionFailedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Borter.Inject.ResolutionFailedException"/> class with the specifed error message
+            and a reference to the inner exception that is the cause of the exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The inner exception that is the cause of the exception.</param>
+        </member>
+        <member name="M:Borter.Inject.ResolutionFailedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Borter.Inject.ResolutionFailedException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+    </members>
+</doc>

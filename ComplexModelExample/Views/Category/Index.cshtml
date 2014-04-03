@@ -1,0 +1,86 @@
+﻿@using ComplexModelExample.Controllers
+@model IEnumerable<ComplexModelExample.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="page-header">
+    <h3>Manage Categories @Html.ActionLink("Create New", "Create", null, new { @class = "pull-right btn btn-success" })</h3>
+
+</div>
+
+
+ 
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatDesc)
+            </td>
+             <td>
+                @if (item.Products != null && item.Products.Count() > 0)
+                {
+
+                    <ul class="nav nav-pills" style="margin-bottom: 0px !important;">
+
+                        <li class="dropdown active">
+                            <a class="dropdown-toggle btn-info"  role="button" data-toggle="dropdown" href="#">see products <b class="caret"></b></a>
+                            <ul  class="dropdown-menu" role="menu">
+                                @foreach (var itemInner in item.Products)
+                                {
+                                    <li role="presentation"><a href="#">@itemInner.ProductName</a></li>
+
+                                }
+                           
+                            </ul>
+                        </li>
+                    </ul>
+
+                }
+                else
+                {
+                    <p>No product</p>
+  
+                }
+                    
+                   
+                   
+              
+            </td>
+            <td>
+                <ul class="nav nav-pills" style="margin-bottom: 0px !important;">
+
+                    <li class="dropdown active">
+                        <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Action <b class="caret"></b></a>
+                        <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                            <li role="presentation">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</li>
+                            <li role="presentation">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation">@Html.ActionLink("Details", "Details", new { id = item.Id })</li>
+                        </ul>
+                    </li>
+                </ul>
+                 
+            
+            </td>
+        </tr>
+    }
+
+</table>
